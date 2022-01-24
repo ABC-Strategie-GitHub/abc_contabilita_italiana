@@ -1,7 +1,0 @@
-# generated from manifests external_dependencies
-asn1crypto
-codicefiscale
-elementpath
-openupgradelib
-unidecode
-xmlschema
