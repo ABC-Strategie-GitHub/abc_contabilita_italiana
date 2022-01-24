@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "ABC - split_payment_fix",
+
+    'summary': """
+        Modulo che risolve alcuni bug riscontrati nel modulo OCA split_payment.""",
+
+    'description': """
+        Modulo che risolve alcuni bug riscontrati nel modulo OCA split_payment.
+    """,
+
+    'author': "A.B.C. Srl",
+    'website': "https://www.abcstrategie.it/",
+
+    'category': 'Uncategorized',
+    'version': '0.1',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base','account'],
+
+    # always loaded
+    'data': [
+        # 'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/templates.xml',
+    ],
+    "installable": True,
+    "application": True,
+    # only loaded in demonstration mode
+    'demo': [],
+}
