@@ -17,7 +17,10 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account', 'sale'],
+    'depends': ['base', 'account', 'sale','l10n_it_delivery_note',
+                'l10n_it_delivery_note_base',
+                'l10n_it_delivery_note_batch',
+                'l10n_it_delivery_note_order_link'],
 
     # always loaded
     'data': [
