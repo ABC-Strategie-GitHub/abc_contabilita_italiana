@@ -325,10 +325,24 @@
                                         <t t-esc="snln_line['quantity']"/>
                                         <t t-esc="snln_line['uom_name']" groups="uom.group_uom"/>
                                     </td>
+                                    <td class="text-right smaller-font"><t t-esc="snln_line['lot_name']"/></td>
+                                    <t t-if="lot_id in snln_line">
                                     <t t-set="lot_id" t-value="snln_line['lot_id']"/>
                                     <t t-set="lot" t-value="env['stock.production.lot'].browse([lot_id])"/>
-                                    <td class="text-right smaller-font"><t t-esc="snln_line['lot_name']"/></td>
-                                    <td class="text-right smaller-font"><span t-field="lot.expiration_date"  t-options='{"widget": "date"}'/></td>
+                                    
+                                    <td class="text-right smaller-font"><span t-field="lot.expiration_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
+                                    </t>
+                                    <t t-else="">
+                                        <!-- SE NON E PRESENTE L ID DEL LOTTO LO CERCA PER NOME -->
+                                        <t t-set="lot_name" t-value="snln_line['lot_name']"/>
+                                        <t t-set="lot_by_name" t-value="env['stock.production.lot'].name_search(lot_name)"/>
+                                        <t t-set="first_lot_id" t-value="lot_by_name[0][0]"/>
+                                        <t t-set="first_lot" t-value="env['stock.production.lot'].browse([first_lot_id])"/>
+                                        <td class="text-right smaller-font">
+                                            <span t-esc="first_lot.expiration_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                                        </td>
+                                        
+                                    </t>
                                 </tr>
                             </t>
                         </tbody>
