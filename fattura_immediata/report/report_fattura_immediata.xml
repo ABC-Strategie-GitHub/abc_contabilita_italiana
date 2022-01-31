@@ -336,12 +336,17 @@
                                         <!-- SE NON E PRESENTE L ID DEL LOTTO LO CERCA PER NOME -->
                                         <t t-set="lot_name" t-value="snln_line['lot_name']"/>
                                         <t t-set="lot_by_name" t-value="env['stock.production.lot'].name_search(lot_name)"/>
-                                        <t t-set="first_lot_id" t-value="lot_by_name[0][0]"/>
-                                        <t t-set="first_lot" t-value="env['stock.production.lot'].browse([first_lot_id])"/>
-                                        <td class="text-right smaller-font">
-                                            <span t-esc="first_lot.expiration_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
-                                        </td>
-                                        
+                                        <t t-if="len(lot_by_name)>0 and len(lot_by_name[0])>0">
+                                            <t t-set="first_lot_id" t-value="lot_by_name[0][0]"/>
+                                            <t t-set="first_lot" t-value="env['stock.production.lot'].browse([first_lot_id])"/>
+                                            <td class="text-right smaller-font">
+                                                <span t-esc="first_lot.expiration_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td class="text-right smaller-font">
+                                            </td>
+                                        </t>
                                     </t>
                                 </tr>
                             </t>
