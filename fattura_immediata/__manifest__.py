@@ -43,7 +43,6 @@
                 'l10n_it_pec',
                 'l10n_it_rea',
                 'l10n_it_split_payment',
-                'mai_pos_lotnumer_selection',
                ],
 
     # always loaded
