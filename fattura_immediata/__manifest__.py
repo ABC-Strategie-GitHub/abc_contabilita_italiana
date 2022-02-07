@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.8',
+    'version': '0.9',
 
     # any module necessary for this one to work correctly
     'depends': ['base',
@@ -35,7 +35,6 @@
                 'l10n_it_fatturapa',
                 'l10n_it_fatturapa_in',
                 'l10n_it_fatturapa_out',
-                'l10n_it_fatturapa_sale',
                 'l10n_it_fiscal_document_type',
                 'l10n_it_fiscal_payment_term',
                 'l10n_it_fiscalcode',
