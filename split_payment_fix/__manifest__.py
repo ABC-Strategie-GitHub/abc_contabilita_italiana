@@ -3,7 +3,7 @@
     'name': "ABC - split_payment_fix",
 
     'summary': """
-        Modulo che risolve alcuni bug riscontrati nel modulo OCA split_payment.""",
+        Modulo che risolve alcuni bug riscontrati nel modulo OCA split_payment. """,
 
     'description': """
         Modulo che risolve alcuni bug riscontrati nel modulo OCA split_payment.
