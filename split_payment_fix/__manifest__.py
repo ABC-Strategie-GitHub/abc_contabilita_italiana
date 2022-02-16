@@ -16,16 +16,16 @@
     'version': '0.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account'],
+    'depends': ['base','account', 'l10n_it_withholding_tax'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        
     ],
     "installable": True,
-    "application": True,
     # only loaded in demonstration mode
     'demo': [],
 }
