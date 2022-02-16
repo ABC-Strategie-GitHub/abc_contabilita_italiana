@@ -1,24 +1,42 @@
-# Copyright 2015  Davide Corio <davide.corio@abstract.it>
-# Copyright 2015-2016  Lorenzo Battistini - Agile Business Group
-# Copyright 2016  Alessio Gerace - Agile Business Group
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
-from odoo import _, fields, models
+from odoo import _, fields, models,api
 from odoo.exceptions import UserError
 from odoo.tools import float_compare
 import logging
 _logger = logging.getLogger(__name__)
 
+class WithholdingTax(models.Model):
+     _name = "withholding.tax"
+     _inherit = "withholding.tax"
+    
+class AccountInvoiceWithholdingTax(models.Model):
+    
+    _name = "account.invoice.withholding.tax"
+    _inherit = "account.invoice.withholding.tax"
+    
+    
 class AccountMove(models.Model):
     _name = "account.move"
     _inherit = "account.move"
 
-
+    @api.depends("amount_sp")
+    def calcTotalSplit(self):
+        self.split_payment=-1*self.amount_sp
+            
+    @api.depends("amount_untaxed")
+    def calcTotal(self):
+        self.total_with_sp=self.amount_untaxed+self.amount_sp
+        
+        
+    split_payment=fields.Monetary(string="Split Payment", store=True, readonly=True, compute=calcTotalSplit)
+    total_with_sp=fields.Monetary(string="Totale Split Payment", store=True, readonly=True, compute=calcTotal)
+    
+    
+        
     def set_receivable_line_ids(self):
         """Recompute all account move lines by _recompute_dynamic_lines()
         and set correct receivable lines
         """
-        _logger.info('New Code Running')
+        
         self._recompute_dynamic_lines()
         line_client_ids = self.line_ids.filtered(
             lambda l: l.account_id.id
