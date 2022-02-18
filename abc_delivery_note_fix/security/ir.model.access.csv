@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_abc_delivery_note_fix_abc_delivery_note_fix,abc_delivery_note_fix.abc_delivery_note_fix,model_abc_delivery_note_fix_abc_delivery_note_fix,base.group_user,1,1,1,1
