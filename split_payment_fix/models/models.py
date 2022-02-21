@@ -32,7 +32,6 @@ class AccountMove(models.Model):
     split_payment=fields.Monetary(string="Split Payment", store=True, readonly=True, compute=calcTotalSplit)
     total_with_sp=fields.Monetary(string="Totale Split Payment", store=True, readonly=True, compute=calcTotal)
     
-    
         
     def set_receivable_line_ids(self):
         """Recompute all account move lines by _recompute_dynamic_lines()
