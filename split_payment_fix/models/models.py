@@ -113,13 +113,13 @@ class SaleOrder(models.Model):
     
     @api.depends("amount_tax")
     def calcTotalSplit(self):
-        if(self.partner_id.property_account_position_id.name == "Split Payment"):
+        if(self.fiscal_position_id.name == "Split Payment"):
             for record in self:
                 record.split_payment=-1*record.amount_tax
             
     @api.depends("amount_untaxed")
     def calcTotal(self):
-        if(self.partner_id.property_account_position_id.name == "Split Payment"):
+        if(self.fiscal_position_id.name == "Split Payment"):
             for record in self:
                 record.total_with_sp=record.amount_untaxed+record.amount_tax
         
@@ -132,7 +132,7 @@ class SaleOrder(models.Model):
        res = super(SaleOrder, self)._amount_all()
        # do the things here
     
-       if(self.partner_id.property_account_position_id.name == "Split Payment"):
+       if(self.fiscal_position_id.name == "Split Payment"):
             for record in self:
                 record.amount_total=record.split_payment+record.total_with_sp
        return res
