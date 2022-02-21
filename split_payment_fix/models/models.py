@@ -110,7 +110,7 @@ class AccountMove(models.Model):
 class SaleOrder(models.Model):
     _name = "sale.order"
     _inherit = "sale.order"
-
+    
     @api.depends("amount_tax")
     def calcTotalSplit(self):
         if(self.partner_id.property_account_position_id.name == "Split Payment"):
