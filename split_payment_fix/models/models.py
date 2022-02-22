@@ -111,29 +111,31 @@ class SaleOrder(models.Model):
     _name = "sale.order"
     _inherit = "sale.order"
     
-    '''@api.depends("amount_tax")
+    @api.depends("amount_tax")
     def calcTotalSplit(self):
-        if(self.fiscal_position_id.name == "Split Payment"):
-            for record in self:
-                record.split_payment=-1*record.amount_tax'''
+        if(len(self.fiscal_position_id)==0):
+             if(self.fiscal_position_id.name == "Split Payment"):
+                 for record in self:
+                     record.split_payment=-1*record.amount_tax
             
     @api.depends("amount_untaxed")
     def calcTotal(self):
-        if(self.fiscal_position_id.name == "Split Payment"):
-            for record in self:
-                record.total_with_sp=record.amount_untaxed+record.amount_tax
+        if(len(self.fiscal_position_id)==0):
+             if(self.fiscal_position_id.name == "Split Payment"):
+                 for record in self:
+                     record.total_with_sp=record.amount_untaxed+record.amount_tax
         
         
-    #split_payment=fields.Monetary(string="Split Payment", store=True, readonly=True, compute=calcTotalSplit)
+    split_payment=fields.Monetary(string="Split Payment", store=True, readonly=True, compute=calcTotalSplit)
     total_with_sp=fields.Monetary(string="Totale Split Payment", store=True, readonly=True, compute=calcTotal)
     
     
-    '''def _amount_all(self):
+    def _amount_all(self):
        res = super(SaleOrder, self)._amount_all()
        # do the things here
-    
-       if(self.fiscal_position_id.name == "Split Payment"):
+       if(len(self.fiscal_position_id)==0):
+          if(self.fiscal_position_id.name == "Split Payment"):
             for record in self:
                 record.amount_total=record.split_payment+record.total_with_sp
-       return res'''
+       return res
     
