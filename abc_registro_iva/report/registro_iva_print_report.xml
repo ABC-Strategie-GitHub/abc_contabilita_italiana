@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+    
+
+    <record id="registro_iva_print_report" model="ir.actions.report">
+        <field name="name">Registro IVA</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">abc_registro_iva.registro_iva_template</field>
+        <field name="report_file">abc_registro_iva.registro_iva_template</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+        <field name="print_report_name">"Registro IVA - %s" %(object.name)</field>
+        <field name="paperformat_id" ref="abc_registro_iva.registro_iva_formato_carta"/>
+        <!-- <field name="paperformat_id" ref="l10n_it_account.l10n_it_account_a4_landscape" /> -->
+    </record>
+        
+    </data>
+</odoo>
