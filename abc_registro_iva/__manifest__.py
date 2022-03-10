@@ -10,7 +10,7 @@
     'website': "https://www.abcstrategie.it/",
 
     'category': 'Account',
-    'version': '0.1',
+    'version': '0.2',
 
     'depends': ['base', 'account', 'l10n_it_vat_registries', 'base_setup', 'l10n_it_account', 'web', 'account_tax_balance', 'date_range', 'l10n_it_vat_settlement_date'],
 
