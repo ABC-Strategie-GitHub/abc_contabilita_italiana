@@ -138,10 +138,20 @@
                                                     <!-- Numero fattura (fornitore)-->
                                                     <td
                                                             class="left_without_line_bold"
-                                                        ><div
+                                                        >
+                                                        <!--
+                                                        <div
                                                                 style="page-break-inside: avoid"
                                                                 t-esc="line['reference'].split(',')[0]"
-                                                            /></td>
+                                                            />
+                                                            -->
+                                                        <div
+                                                                style="page-break-inside: avoid"
+                                                                t-esc="move.ref"
+                                                            />
+                                                        
+                                                        
+                                                    </td>
                                                 </t>
                                                 <t
                                                         t-if="move.journal_id.type == 'sale'"
