@@ -48,3 +48,4 @@
 [submodule "OCA/l10n-italy"]
 	path = OCA/l10n-italy
 	url = git@github.com:Borruso/l10n-italy.git
+	branch = 14.0-fix-reconcile-payments
