@@ -21,7 +21,7 @@ class AccountInvoice(models.Model):
     def _onchange_date_vat_settlement(self):
         self.write({"date_vat_settlement": self.date_vat_settlement})
 
-    def rc_inv_vals(self, partner, account, rc_type, lines, currency):
-        ret = super().rc_inv_vals(partner, account, rc_type, lines, currency)
+    def rc_inv_vals(self, partner, rc_type, lines, currency):
+        ret = super().rc_inv_vals(partner, rc_type, lines, currency)
         ret['date_vat_settlement'] = self.date_vat_settlement
         return ret
