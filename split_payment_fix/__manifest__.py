@@ -12,8 +12,8 @@
     'author': "A.B.C. Srl",
     'website': "https://www.abcstrategie.it/",
 
-    'category': 'Uncategorized',
-    'version': '0.2',
+    'category': 'Contability',
+    'version': '0.3',
 
     # any module necessary for this one to work correctly
     'depends': ['base','account', 'l10n_it_withholding_tax','sale'],
