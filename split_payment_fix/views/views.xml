@@ -89,7 +89,7 @@
 
         <xpath expr="//field[@name='amount_tax']" position="after">
             <field name="split_payment" string="Split Payment" attrs="{'invisible': [('split_payment','=',0)]}"/>
-            <field name="total_with_sp" string="Totale" attrs="{'invisible': [('split_payment','=',0)]}"/>
+            <field name="total_with_sp" string="Totale" attrs="{'invisible': [(1,'=',1)]}"/>
         </xpath>
           
         
