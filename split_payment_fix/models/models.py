@@ -134,7 +134,7 @@ class SaleOrder(models.Model):
        res = super(SaleOrder, self)._amount_all()
        # do the things here
        if(len(self.fiscal_position_id)==1):
-          if(self.fiscal_position_id.name == "Split Payment"):
+          if(self.fiscal_position_id.name == "Split Payment" or self.fiscal_position_id.name == "Scissione pagamenti"):
             for record in self:
                 record.amount_total=record.split_payment+record.total_with_sp
        return res
