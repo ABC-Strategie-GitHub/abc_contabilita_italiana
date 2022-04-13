@@ -28,7 +28,7 @@ class AccountMove(models.Model):
         for record in self:
             record.total_with_sp=record.amount_untaxed+record.amount_sp
         
-        
+    split_payment=fields.Monetary(invisible=False)
     split_payment=fields.Monetary(string="Split Payment", store=True, readonly=True, compute=calcTotalSplit)
     total_with_sp=fields.Monetary(string="Totale Split Payment", store=True, readonly=True, compute=calcTotal)
       
@@ -114,14 +114,14 @@ class SaleOrder(models.Model):
     @api.depends("amount_tax")
     def calcTotalSplit(self):
         if(len(self.fiscal_position_id)==1):
-             if(self.fiscal_position_id.name == "Split Payment"):
+             if(self.fiscal_position_id.name == "Split Payment" or self.fiscal_position_id.name == "Scissione pagamenti"):
                  for record in self:
                      record.split_payment=-1*record.amount_tax
             
     @api.depends("amount_untaxed")
     def calcTotal(self):
         if(len(self.fiscal_position_id)==1):
-             if(self.fiscal_position_id.name == "Split Payment"):
+             if(self.fiscal_position_id.name == "Split Payment" or self.fiscal_position_id.name == "Scissione pagamenti"):
                  for record in self:
                      record.total_with_sp=record.amount_untaxed+record.amount_tax
         
